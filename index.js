@@ -5,10 +5,10 @@ const app = express();
 app.use(cors());
 const axios = require("axios");
 
-app.get("/", async (req, res) => {
+app.get("/comics/:id", async (req, res) => {
   try {
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/characters?name=${req.query.name}&apiKey=${process.env.API_KEY}`
+      `https://lereacteur-marvel-api.herokuapp.com/comics/${req.params.id}?apiKey=${process.env.API_KEY}`
     );
     return res.json(response.data);
   } catch (error) {
@@ -27,10 +27,10 @@ app.get("/comics", async (req, res) => {
   }
 });
 
-app.get("/comics/:id", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/comics/${req.params.id}?apiKey=${process.env.API_KEY}`
+      `https://lereacteur-marvel-api.herokuapp.com/characters?name=${req.query.name}&apiKey=${process.env.API_KEY}`
     );
     return res.json(response.data);
   } catch (error) {
