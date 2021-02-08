@@ -4,7 +4,6 @@ require("dotenv").config();
 const app = express();
 app.use(cors());
 const axios = require("axios");
-const qs = require("qs");
 
 app.get("/", async (req, res) => {
   try {
